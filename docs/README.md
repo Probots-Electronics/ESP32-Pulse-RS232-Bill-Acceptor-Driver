@@ -7,7 +7,7 @@ Welcome to the ESP32 Vending Controller documentation. This directory contains a
 | Document | Purpose | Audience |
 | :--- | :--- | :--- |
 | 🚀 **[Quick Start](../README.md)** | Project overview and fast-build instructions. | Beginners |
-| 🔌 **[Hardware Setup](HARDWARE_SETUP.md)** | Wiring diagrams, DIP switches, and level shifter specs. | Hardware Engineers |
+| 🔌 **[Hardware Setup](HARDWARE_SETUP.md)** | Wiring diagrams, DIP switches, and TTL logic specs. | Hardware Engineers |
 | 🏛️ **[System Architecture](ARCHITECTURE.md)** | Modular design, class relations, and operational flow. | Architects / Developers |
 | 📗 **[API Reference](API_REFERENCE.md)** | Detailed library method signatures and class details. | Developers |
 | 📦 **[Deployment Guide](DEPLOYMENT.md)** | PlatformIO environment setup and upload steps. | Operators |

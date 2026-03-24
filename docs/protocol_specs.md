@@ -114,15 +114,12 @@ To use both communication modes simultaneously, wire your ESP32 to the Bill Acce
 
 | BA Pin (TP77) | Signal Name | ESP32 Pin | Logic Level | Notes |
 | :--- | :--- | :--- | :--- | :--- |
-| **Pin 3** | RS232 TXD | **GPIO 16** | 3.3V (via MAX3232) | Connect via Level Shifter |
-| **Pin 4** | RS232 RXD | **GPIO 17** | 3.3V (via MAX3232) | Connect via Level Shifter |
-| **Pin 5** | Pulse Output | **GPIO 4** | 3.3V (Open Col) | Internal Pull-up used |
-| **Pin 6** | Inhibit Input | **GPIO 5** | 3.3V | **High = Stop**, **Low = Enable** |
+| **Pin 8** | RS232 TXD | **GPIO 16** | 3.3V TTL | Direct Connect |
+| **Pin 7** | RS232 RXD | **GPIO 17** | 3.3V TTL | Direct Connect |
+| **Pin ?** | Pulse Output | **GPIO 27** | 3.3V | External 10k Pull-up used |
+| **Pin 1** | Inhibit Input  | **GPIO 5** | 3.3V | **High = Stop**, **Low = Enable** |
 | **GND** | Ground | **GND** | 0V | Common Ground required |
 | **+12V** | Power | **N/A** | 12V DC | External Power Supply |
-
-> [!IMPORTANT]
-> **RS232 Level Shifter**: You MUST use a MAX3232 or similar module. Connecting the Bill Acceptor's RS232 directly to the ESP32 will damage the pins.
 
 ---
 
@@ -155,7 +152,7 @@ Depending on your bill acceptor, you may have the **WEL-R7U02** (9-pin primary) 
 | **Pin 2** | Orange | **Ground** | Common **GND** |
 | **Pin 3** | Yellow | **Inhibit (+)** | (ALT) Inhibit Control |
 | **Pin 4** | Green | **Inhibit (-)** | (ALT) GND |
-| **Pin 5** | Blue | **Pulse Output** | **GPIO 4** (Count Pin) |
+| **Pin 5** | Blue | **Pulse Output** | **GPIO 27** (10k Pull-Up Req) |
 
 ### RS232 Interface (8-Pin TMT Connector)
 *Used for serial communication (RX2/TX2).*
@@ -163,9 +160,9 @@ Depending on your bill acceptor, you may have the **WEL-R7U02** (9-pin primary) 
 | Pin | Color | Function | ESP32 Connection |
 | :--- | :---: | :--- | :--- |
 | **Pin 1** | Blue | **Ground** | Common **GND** |
-| **Pin 6** | White | **VCC** | 12V Power |
-| **Pin 7** | Black | **RXD** | **GPIO 17** (via Level Shifter) |
-| **Pin 8** | Purple | **TXD** | **GPIO 16** (via Level Shifter) |
+| **Pin 6** | White | **VCC** | 5V TTL VCC (Leave Disconnected) |
+| **Pin 7** | Black | **RXD** | **GPIO 17** (Direct Connect) |
+| **Pin 8** | Purple | **TXD** | **GPIO 16** (Direct Connect) |
 
 ---
 

@@ -8,7 +8,6 @@ The ESP32 Vending Controller is designed with a modular, interface-driven archit
 graph TD
     Main[main.cpp] --> |Uses| Acceptor[IBillAcceptor Interface]
     Main --> |Updates| Cash[CashStorage]
-    Main --> |Commands| Display[DisplayManager]
     
     Acceptor --> |Impl| RS232[RS232BillAcceptor]
     Acceptor --> |Impl| Pulse[PulseBillAcceptor]
@@ -29,8 +28,7 @@ Handles communication with the hardware.
 
 #### 2. VendingSystem (`lib/VendingSystem`)
 Manages high-level state.
-- **`CashStorage`**: Persistent tracking of total money accepted.
-- **`DisplayManager`**: Handles I2C LCD updates.
+- **`CashStorage`**: Persistent tracking of total money accepted via NVRAM.
 
 ## Operational Flow
 
@@ -38,7 +36,7 @@ The following diagram illustrates the main application logic:
 
 ```mermaid
 flowchart TD
-    Start([Power On]) --> Init[Initialize NVS, LCD & Serial]
+    Start([Power On]) --> Init[Initialize NVS & Serial]
     Init --> Load[Load Total Cash from NVS]
     Load --> SetupBA[Initialize Bill Acceptor]
     SetupBA --> Loop{Main Loop}
@@ -51,8 +49,8 @@ flowchart TD
     
     Map --> UpdateTotal[Update Running Total]
     UpdateTotal --> Store[Save New Total to NVS]
-    Store --> Display[Update LCD Screen]
-    Display --> Delay[Wait 2s - Status Clear]
+    Store --> Log[Print to Serial Monitor]
+    Log --> Delay[Wait 2s - Status Clear]
     Delay --> Loop
 ```
 
