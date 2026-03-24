@@ -1,0 +1,19 @@
+# PlatformIO
+**/.pio/
+**/.vscode/
+
+# Build artifacts
+build/
+*.o
+*.a
+*.so
+*.lib
+*.dll
+*.exe
+
+# Other
+*.bak
+*.tmp
+*~
+.DS_Store
+Thumbs.db
