@@ -58,6 +58,10 @@ Pulse communication uses a series of digital pulses to represent the value of th
 - **Pulse Width:** Typ. 50ms (Low) / 50ms (High).
 - **Inactivity Timeout:** 500ms (used to signal end of pulse train).
 
+### Software Processing Constraints (Pulse mode)
+- **Interrupt Type:** The ESP32 utilizes a **FALLING** edge hardware interrupt to detect each pulse instantly without blocking the main event loop.
+- **Debouncing:** The firmware implements a basic **40ms software lockout filter**. Any subsequent signal state changes (electrical bouncing/noise) occurring within 40ms of the initial falling edge are ignored.
+
 ### Pulse-to-Value Mapping
 The firmware currently implements the following default mapping (configurable):
 | Pulse Count | Bill Value | Code Returned |
